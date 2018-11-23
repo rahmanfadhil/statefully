@@ -1,0 +1,9 @@
+{
+  "name": "statefully",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:rahmanfadhil/statefully.git",
+  "author": "Rahman Fadhil <rhmnfadhil@gmail.com> (http://rahmanfadhil.com)",
+  "license": "MIT",
+  "private": true
+}
