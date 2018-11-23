@@ -5,5 +5,13 @@
   "repository": "git@github.com:rahmanfadhil/statefully.git",
   "author": "Rahman Fadhil <rhmnfadhil@gmail.com> (http://rahmanfadhil.com)",
   "license": "MIT",
-  "private": true
+  "keywords": ["state"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rahmanfadhil/statefully.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rahmanfadhil/statefully/issues"
+  },
+  "homepage": "https://github.com/rahmanfadhil/statefully#readme"
 }
