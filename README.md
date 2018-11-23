@@ -1,3 +1,3 @@
 # Statefully
 
-A tiny state manager for your javascript apps
+A tiny state container for your javascript apps
