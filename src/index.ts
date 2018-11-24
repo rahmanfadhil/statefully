@@ -9,7 +9,7 @@ export class Statefully<T extends object> {
   private state: T;
   private mutations: Array<Mutation<T>> = [];
 
-  constructor(initialState) {
+  public constructor(initialState) {
     this.state = initialState;
   }
 
@@ -42,12 +42,3 @@ export class Statefully<T extends object> {
 export function createStore<IState extends object>(initialState: IState) {
   return new Statefully<IState>(initialState);
 }
-
-(async () => {
-  const initialState = { hello: "world" };
-  const store = createStore<{ hello: string }>(initialState);
-
-  store.mutation("SET_HELLO", (state, { name }) => ({ hello: name }));
-  await store.mutate("SET_HELLO", { name: "changed" });
-  console.log(store.getState());
-})();
