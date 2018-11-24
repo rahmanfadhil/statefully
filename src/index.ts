@@ -1,8 +1,8 @@
-export type MutationCallback<T> = (state: T, payload: any) => T;
+export type MutationCallback<T, U> = (state: T, payload: U) => T;
 
 export interface Mutation<T> {
   name: string;
-  callback: MutationCallback<T>;
+  callback: MutationCallback<T, any>;
 }
 
 export class Statefully<T extends object> {
@@ -17,11 +17,11 @@ export class Statefully<T extends object> {
     return Object.assign(this.state);
   }
 
-  public mutation(name: string, callback: MutationCallback<T>): void {
+  public mutation<U>(name: string, callback: MutationCallback<T, U>): void {
     this.mutations.push({ name, callback });
   }
 
-  public mutate(name: string, payload: any): Promise<T> {
+  public mutate<U>(name: string, payload: U): Promise<T> {
     return new Promise((resolve, reject) => {
       for (var i = 0; i < this.mutations.length; i++) {
         if (this.mutations[i].name === name) {
