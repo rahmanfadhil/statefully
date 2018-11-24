@@ -4,16 +4,17 @@ import { uglify } from "rollup-plugin-uglify";
 
 export default {
   input: "./src/index.ts",
-  plugins: [typescript({ clean: true }), uglify()],
+  plugins: [
+    typescript({
+      clean: true,
+      tsconfigOverride: { exclude: ["**/*.spec.ts"] },
+    }),
+    uglify(),
+  ],
   output: [
     {
       file: "dist/index.js",
       format: "cjs",
-    },
-    {
-      file: "dist/index.umd.js",
-      name: "Statefully",
-      format: "umd",
     },
   ],
 };
