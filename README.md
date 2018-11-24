@@ -1,8 +1,19 @@
 # Statefully
 
-![npm](https://img.shields.io/npm/dt/statefully.svg) ![Travis (.org)](https://img.shields.io/travis/rahmanfadhil/statefully.svg) ![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/statefully.svg)
+![Travis (.org)](https://img.shields.io/travis/rahmanfadhil/statefully.svg) ![npm](https://img.shields.io/npm/dt/statefully.svg) ![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/statefully.svg)
 
 📦 A tiny state container for your javascript apps
+
+### 🌟 Features
+
+- 💡 Simple
+- ⏫ Scalable
+- 🚀 Asynchronous
+- 👍 Type Support
+
+> ⚠ This project is under active development
+
+---
 
 ### 🔧 Installation
 
@@ -14,10 +25,15 @@ npm install statefully
 yarn add statefully
 ```
 
+---
+
 ### 📦 Usage
 
 ```js
+// Using ES Module
 import { createContainer } from "statefully";
+// Using CommonJS
+const { createContainer } = require("statefully")
 
 // Create store with initial value
 const store = createContainer({ greeting: "John" });
@@ -35,6 +51,8 @@ await store.mutate("SET_HELLO");
 
 store.getState(); // { greeting: "Doe" }
 ```
+
+---
 
 ### 🔑 License
 
