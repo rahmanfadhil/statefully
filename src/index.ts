@@ -1,11 +1,13 @@
-export interface Dispatcher<T> {
+export type MutationCallback<T> = (state: T, payload: any) => T;
+
+export interface Mutation<T> {
   name: string;
-  callback: (state: T) => T;
+  callback: MutationCallback<T>;
 }
 
 export class Statefully<T extends object> {
   private state: T;
-  private dispatcher: Array<Dispatcher<T>> = [];
+  private mutations: Array<Mutation<T>> = [];
 
   constructor(initialState) {
     this.state = initialState;
@@ -15,22 +17,22 @@ export class Statefully<T extends object> {
     return Object.assign(this.state);
   }
 
-  public register(name: string, callback: (state: T) => T): void {
-    this.dispatcher.push({ name, callback });
+  public mutation(name: string, callback: MutationCallback<T>): void {
+    this.mutations.push({ name, callback });
   }
 
-  public dispatch(name: string): Promise<void> {
+  public mutate(name: string, payload: any): Promise<T> {
     return new Promise((resolve, reject) => {
-      for (var i = 0; i < this.dispatcher.length; i++) {
-        if (this.dispatcher[i].name === name) {
-          const dispatcher = this.dispatcher[i];
-          const data = dispatcher.callback(Object.assign(this.state));
+      for (var i = 0; i < this.mutations.length; i++) {
+        if (this.mutations[i].name === name) {
+          const mutation = this.mutations[i];
+          const data = mutation.callback(Object.assign(this.state), payload);
           this.state = Object.assign({}, this.state, data);
           resolve(Object.assign(this.state));
           break;
         }
-        if (i === this.dispatcher.length - 1) {
-          reject(`"${name}" is not a registered dispatcher`);
+        if (i === this.mutations.length - 1) {
+          reject(`"${name}" is not a registered mutations`);
         }
       }
     });
@@ -40,3 +42,12 @@ export class Statefully<T extends object> {
 export function createStore<IState extends object>(initialState: IState) {
   return new Statefully<IState>(initialState);
 }
+
+(async () => {
+  const initialState = { hello: "world" };
+  const store = createStore<{ hello: string }>(initialState);
+
+  store.mutation("SET_HELLO", (state, { name }) => ({ hello: name }));
+  await store.mutate("SET_HELLO", { name: "changed" });
+  console.log(store.getState());
+})();
