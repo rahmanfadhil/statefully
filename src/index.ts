@@ -22,7 +22,7 @@ export class Statefully<T extends object> {
           const dispatcher = this.dispatcher[i];
           const data = dispatcher.callback(Object.assign(this.state));
           this.state = Object.assign({}, this.state, data);
-          resolve();
+          resolve(Object.assign(this.state));
           break;
         }
         if (i === this.dispatcher.length - 1) {
