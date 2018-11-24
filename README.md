@@ -1,6 +1,6 @@
 # Statefully
 
-![Travis (.org)](https://img.shields.io/travis/rahmanfadhil/statefully.svg) ![npm](https://img.shields.io/npm/dt/statefully.svg) ![size](https://badgen.now.sh/badge/install%20size/7.65%20kB/44CC11)
+![Travis (.org)](https://img.shields.io/travis/rahmanfadhil/statefully.svg) ![size](https://badgen.now.sh/badge/install%20size/7.65%20kB/44CC11)
 
 📦 A tiny state container for your javascript apps
 
