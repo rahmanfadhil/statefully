@@ -6,8 +6,8 @@ describe("Main", () => {
     const store = createStore(initialState);
     expect(store instanceof Statefully).toBeTruthy();
 
-    store.register("setHello", () => ({ hello: "changed" }));
-    await store.dispatch("setHello");
+    store.register("SET_HELLO", () => ({ hello: "changed" }));
+    await store.dispatch("SET_HELLO");
     expect(store.state).toEqual({ hello: "changed" });
   });
 });
