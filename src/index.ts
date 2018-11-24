@@ -9,7 +9,7 @@ export class Statefully<T extends object> {
   private state: T;
   private mutations: Array<Mutation<T>> = [];
 
-  public constructor(initialState) {
+  public constructor(initialState: T) {
     this.state = initialState;
   }
 
