@@ -39,6 +39,6 @@ export class Statefully<T extends object> {
   }
 }
 
-export function createStore<IState extends object>(initialState: IState) {
+export function createContainer<IState extends object>(initialState: IState) {
   return new Statefully<IState>(initialState);
 }
