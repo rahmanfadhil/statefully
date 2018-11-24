@@ -4,7 +4,8 @@
   "description": "A tiny state container for your javascript apps",
   "main": "dist/index.js",
   "scripts": {
-    "build": "rm -rf dist && rollup -c"
+    "build": "rm -rf dist && rollup -c",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -13,7 +14,11 @@
   "author": "Rahman Fadhil <rhmnfadhil@gmail.com> (http://rahmanfadhil.com)",
   "license": "MIT",
   "keywords": [
-    "state"
+    "state",
+    "javascript",
+    "container",
+    "react",
+    "zero-dependencies"
   ],
   "bugs": {
     "url": "https://github.com/rahmanfadhil/statefully/issues"
