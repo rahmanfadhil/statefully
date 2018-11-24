@@ -7,6 +7,11 @@
     "build": "rm -rf dist && rollup -c",
     "test": "jest"
   },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist/"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rahmanfadhil/statefully.git"
