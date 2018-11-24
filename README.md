@@ -66,7 +66,7 @@ store.getState(); // { greeting: "Doe" }
 
 ### 📝 Guide
 
-**Use TypeScript / Flow**
+**Use TypeScript**
 
 ```ts
 // Create container
