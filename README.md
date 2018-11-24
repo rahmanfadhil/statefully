@@ -1,6 +1,6 @@
 # Statefully
 
-![Travis (.org)](https://img.shields.io/travis/rahmanfadhil/statefully.svg) ![npm](https://img.shields.io/npm/dt/statefully.svg) ![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/statefully.svg)
+![Travis (.org)](https://img.shields.io/travis/rahmanfadhil/statefully.svg) ![npm](https://img.shields.io/npm/dt/statefully.svg) ![size](https://badgen.now.sh/badge/install%20size/7.65%20kB/44CC11)
 
 📦 A tiny state container for your javascript apps
 
@@ -33,7 +33,7 @@ yarn add statefully
 // Using ES Module
 import { createContainer } from "statefully";
 // Using CommonJS
-const { createContainer } = require("statefully")
+const { createContainer } = require("statefully");
 
 // Create store with initial value
 const store = createContainer({ greeting: "John" });
