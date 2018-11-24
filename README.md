@@ -11,7 +11,7 @@
 - 🔌 **Pluggable:** Use anywhere you want
 - 🔒 **Type-Safe:** Great type support with TypeScript & Flow
 
-> ⚠ This project is under active development!
+> ⚠ NOTE: This project is under active development!
 
 ---
 
