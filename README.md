@@ -56,8 +56,7 @@ store.mutation("SET_GREETING", ({ name }) => {
 });
 
 // Call mutation
-// Mutations are asynchronous
-await store.mutate("SET_GREETING", { name: "Doe" });
+store.mutate("SET_GREETING", { name: "Doe" });
 
 store.getState(); // { greeting: "Doe" }
 ```
@@ -65,6 +64,16 @@ store.getState(); // { greeting: "Doe" }
 ---
 
 ### 📝 Guide
+
+**Strict Mode**
+
+> By default, calling unregistered mutation will not throw any errors. But you can change this behavior by passing strictMode to container options
+
+```js
+const store = createContainer({ greeting: "John" }, { strictMode: true });
+
+store.mutate("WRONG_MUTATION"); // Will throw an Error
+```
 
 **Use TypeScript**
 
@@ -78,6 +87,9 @@ type GreetingProps = { name: string };
 store.mutation<GreetingProps>("SET_GREETING", ({ name }) => {
   return { greeting: name };
 });
+
+// Call mutation
+store.mutate<GreetingProps>("SET_GREETING", { name: "Doe" });
 ```
 
 ---
