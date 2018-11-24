@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
-    "lib": ["es6", "dom"],
+    "lib": ["es6"],
     "target": "es5",
     "strict": true,
     "rootDir": "src",
-    "outDir": "dist"
-  }
+    "outDir": "dist",
+    "declaration": true
+  },
+  "exclude": ["**/*.spec.ts"]
 }

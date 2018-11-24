@@ -1,4 +1,4 @@
-import { createStore, Statefully } from "../src";
+import { createStore, Statefully } from "../index";
 
 describe("Main", () => {
   test("Should passed basic test", async () => {
