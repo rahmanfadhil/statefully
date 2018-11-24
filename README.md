@@ -6,12 +6,12 @@
 
 ### 🌟 Features
 
-- 💡 Simple
-- ⏫ Scalable
-- 🚀 Asynchronous
-- 👍 Type Support
+- 💡 **Simple:** Easy to learn APIs
+- 📦 **Small:** 7kb install size only
+- 🔌 **Pluggable:** Use anywhere you want
+- 🔒 **Type-Safe:** Great type support with TypeScript & Flow
 
-> ⚠ This project is under active development
+> ⚠ This project is under active development!
 
 ---
 
@@ -29,6 +29,8 @@ yarn add statefully
 
 ### 📦 Usage
 
+**Create container**
+
 ```js
 // Using ES Module
 import { createContainer } from "statefully";
@@ -37,19 +39,42 @@ const { createContainer } = require("statefully");
 
 // Create store with initial value
 const store = createContainer({ greeting: "John" });
+```
 
+**Get current state**
+
+```js
 store.getState(); // { greeting: "John" }
+```
 
+**Mutations**
+
+```js
 // Register mutation
-store.mutation("SET_HELLO", () => {
-  return { greeting: "Doe" }; // Set greeting to "Doe"
+store.mutation("SET_GREETING", ({ name }) => {
+  return { greeting: name };
 });
 
-// Run mutation
-// mutate function is async, dont forget to add 'await'
-await store.mutate("SET_HELLO");
+// Call mutation
+store.mutate("SET_GREETING", { name: "Doe" });
+```
 
-store.getState(); // { greeting: "Doe" }
+---
+
+### 📝 Guide
+
+> ⚠ Mutations are asynchronous
+
+```js
+store.mutate("SET_GREETING", { name: "Doe" });
+
+store.getState(); // Will not get latest value
+```
+
+```js
+await store.mutate("SET_GREETING", { name: "Doe" });
+
+store.getState(); // This will work 👍
 ```
 
 ---
