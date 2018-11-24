@@ -16,13 +16,26 @@
     "url": "https://github.com/rahmanfadhil/statefully/issues"
   },
   "homepage": "https://github.com/rahmanfadhil/statefully#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
   "devDependencies": {
     "@types/jest": "^23.3.9",
     "eslint": "^5.9.0",
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-typescript": "^0.13.0",
+    "husky": "^1.2.0",
     "jest": "^23.6.0",
+    "lint-staged": "^8.1.0",
     "prettier": "^1.15.2",
     "ts-jest": "^23.10.5",
     "ts-node": "^7.0.1",
@@ -41,5 +54,6 @@
     "testMatch": [
       "**/__tests__/*.+(ts|tsx|js)"
     ]
-  }
+  },
+  "dependencies": {}
 }
