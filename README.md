@@ -6,7 +6,7 @@
 
 ### 🌟 Features
 
-- 💡 **Simple:** Easy to learn APIs
+- 💡 **Simple:** Easy to learn & use APIs
 - 📦 **Small:** 7kb install size only
 - 🔌 **Pluggable:** Use anywhere you want
 - 🔒 **Type-Safe:** Great type support with TypeScript & Flow
@@ -37,7 +37,7 @@ import { createContainer } from "statefully";
 // Using CommonJS
 const { createContainer } = require("statefully");
 
-// Create store with initial value
+// Create container with initial value
 const store = createContainer({ greeting: "John" });
 ```
 
@@ -56,25 +56,28 @@ store.mutation("SET_GREETING", ({ name }) => {
 });
 
 // Call mutation
-store.mutate("SET_GREETING", { name: "Doe" });
+// Mutations are asynchronous
+await store.mutate("SET_GREETING", { name: "Doe" });
+
+store.getState(); // { greeting: "Doe" }
 ```
 
 ---
 
 ### 📝 Guide
 
-> ⚠ Mutations are asynchronous
+**Use TypeScript / Flow**
 
-```js
-store.mutate("SET_GREETING", { name: "Doe" });
+```ts
+// Create container
+type State = { greeting: string };
+const store = createContainer<State>({ greeting: "John" });
 
-store.getState(); // Will not get latest value
-```
-
-```js
-await store.mutate("SET_GREETING", { name: "Doe" });
-
-store.getState(); // This will work 👍
+// Register mutation
+type GreetingProps = { name: string };
+store.mutation<GreetingProps>("SET_GREETING", ({ name }) => {
+  return { greeting: name };
+});
 ```
 
 ---
