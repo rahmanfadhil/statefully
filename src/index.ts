@@ -4,11 +4,15 @@ export interface Dispatcher<T> {
 }
 
 export class Statefully<T extends object> {
-  public state: T;
+  private state: T;
   private dispatcher: Array<Dispatcher<T>> = [];
 
   constructor(initialState) {
     this.state = initialState;
+  }
+
+  public getState(): T {
+    return Object.assign(this.state);
   }
 
   public register(name: string, callback: (state: T) => T): void {
@@ -33,6 +37,6 @@ export class Statefully<T extends object> {
   }
 }
 
-export function createStore(initialState) {
-  return new Statefully<typeof initialState>(initialState);
+export function createStore<IState extends object>(initialState: IState) {
+  return new Statefully<IState>(initialState);
 }
