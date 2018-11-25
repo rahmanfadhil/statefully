@@ -69,6 +69,13 @@ store.mutate("SET_GREETING", { name: "Doe" });
 store.getState(); // { greeting: "Doe" }
 ```
 
+```js
+// This will work too 👍
+store.mutate({ greeting: "Doe" });
+
+store.getState(); // { greeting: "Doe" }
+```
+
 **Actions (beta)**
 
 > Actions is a function to do asynchronous things. Ex: fetch data from server

@@ -17,5 +17,7 @@ describe("Main", () => {
 
     store.mutate<GreetingProps>("SET_GREETING", { name: "Doe" });
     expect(store.getState()).toEqual({ greeting: "Doe" });
+    store.mutate({ greeting: "Alfred" });
+    expect(store.getState()).toEqual({ greeting: "Alfred" });
   });
 });

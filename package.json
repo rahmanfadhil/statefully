@@ -1,6 +1,6 @@
 {
   "name": "statefully",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A tiny state container for your javascript apps",
   "main": "dist/index.js",
   "scripts": {

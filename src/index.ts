@@ -41,17 +41,21 @@ export class Statefully<T extends object> {
     this.mutations.push({ name, callback });
   }
 
-  public mutate<U>(name: string, payload: U): void {
-    for (var i = 0; i < this.mutations.length; i++) {
-      if (this.mutations[i].name === name) {
-        const mutation = this.mutations[i];
-        const data = mutation.callback(Object.assign(this.state), payload);
-        this.state = Object.assign({}, this.state, data);
-        break;
+  public mutate<U>(name: string | T, payload?: U): void {
+    if (typeof name === "string") {
+      for (var i = 0; i < this.mutations.length; i++) {
+        if (this.mutations[i].name === name) {
+          const mutation = this.mutations[i];
+          const data = mutation.callback(Object.assign(this.state), payload);
+          this.state = Object.assign({}, this.state, data);
+          break;
+        }
+        if (this.config.strictMode && i === this.mutations.length - 1) {
+          throw new Error(`'${name}' is not a registered mutation!`);
+        }
       }
-      if (this.config.strictMode && i === this.mutations.length - 1) {
-        throw new Error(`'${name}' is not a registered mutation!`);
-      }
+    } else if (typeof name === "object") {
+      this.state = Object.assign({}, this.state, name);
     }
   }
 
