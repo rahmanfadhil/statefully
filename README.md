@@ -98,17 +98,6 @@ store.mutate("WRONG_MUTATION");
 store.commit("WRONG_ACTION");
 ```
 
-**Testing Containers**
-
-```js
-// Import your container
-import store from "./container";
-
-describe("Test", () => {
-  test("Testing actions", () => {});
-});
-```
-
 **With TypeScript**
 
 ```ts
