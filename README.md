@@ -1,11 +1,11 @@
 # Statefully
 
-![Travis (.org)](https://img.shields.io/travis/rahmanfadhil/statefully.svg) ![size](https://badgen.now.sh/badge/install%20size/7.65%20kB/44CC11)
+![Travis (.org)](https://img.shields.io/travis/rahmanfadhil/statefully.svg) ![size](https://badgen.net/npm/v/statefully) ![size](https://badgen.net/badgesize/normal/https://unpkg.com/statefully@0.1.3/dist/index.js) ![dependencies](https://badgen.net/npm/dependents/statefully)
 
 📦 A tiny state container for your javascript apps
 
 - 💡 **Simple:** Easy to learn & use APIs
-- 📦 **Small:** 7kb install size only
+- 📦 **Small:** Zero dependencies + 1kb minified size only
 - 🔌 **Pluggable:** Use anywhere you want
 - 🔒 **Type-Safe:** Great type support with TypeScript & Flow
 
