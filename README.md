@@ -15,7 +15,7 @@
 
 ### 🔧 Installation
 
-NodeJS
+**NodeJS**
 
 ```sh
 # Using npm
@@ -25,7 +25,7 @@ npm install statefully
 yarn add statefully
 ```
 
-Vanilla Javascript
+**HTML**
 
 ```html
 <script src="https://unpkg.com/statefully@latest/dist/index.min.js"></script>
