@@ -1,16 +1,21 @@
 import { createContainer, Statefully } from "../src/index";
 
 describe("Main", () => {
-  test("Should passed basic test", async () => {
-    const initialState = { hello: "world" };
-    const store = createContainer<{ hello: string }>(initialState);
-    expect(store instanceof Statefully).toBeTruthy();
+  const initialState = { greeting: "John" };
+  const store = createContainer<{ greeting: string }>(initialState);
 
-    type HelloProps = { name: string };
-    store.mutation<HelloProps>("SET_HELLO", (state, { name }) => ({
-      hello: name,
-    }));
-    store.mutate<HelloProps>("SET_HELLO", { name: "changed" });
-    expect(store.getState()).toEqual({ hello: "changed" });
+  test("Should create a container", async () => {
+    expect(store instanceof Statefully).toBeTruthy();
+    expect(store.getState()).toEqual({ greeting: "John" });
+  });
+
+  test("Should register and run mutation", () => {
+    type GreetingProps = { name: string };
+    store.mutation<GreetingProps>("SET_GREETING", (state, { name }) => {
+      return { greeting: name };
+    });
+
+    store.mutate<GreetingProps>("SET_GREETING", { name: "Doe" });
+    expect(store.getState()).toEqual({ greeting: "Doe" });
   });
 });

@@ -1,8 +1,17 @@
 export type MutationCallback<T, U> = (state: T, payload: U) => T;
+export type ActionCallback<U> = (
+  mutate: <T>(name: string, payload: T) => void,
+  payload: U,
+) => void;
 
 export interface Mutation<T> {
   name: string;
   callback: MutationCallback<T, any>;
+}
+
+export interface Action {
+  name: string;
+  callback: ActionCallback<any>;
 }
 
 export interface ConfigOptions {
@@ -13,6 +22,7 @@ export class Statefully<T extends object> {
   private state: T;
   private config: ConfigOptions;
   private mutations: Array<Mutation<T>> = [];
+  private actions: Array<Action> = [];
 
   public constructor(initialState: T, config?: ConfigOptions) {
     this.state = initialState;
@@ -41,6 +51,23 @@ export class Statefully<T extends object> {
       }
       if (this.config.strictMode && i === this.mutations.length - 1) {
         throw new Error(`'${name}' is not a registered mutation!`);
+      }
+    }
+  }
+
+  public action<U>(name: string, callback: ActionCallback<U>): void {
+    this.actions.push({ name, callback });
+  }
+
+  public commit<U>(name: string, payload: U): void {
+    for (var i = 0; i < this.actions.length; i++) {
+      if (this.actions[i].name === name) {
+        const action = this.actions[i];
+        action.callback(this.mutate, payload);
+        break;
+      }
+      if (this.config.strictMode && i === this.actions.length - 1) {
+        throw new Error(`'${name}' is not a registered action!`);
       }
     }
   }
