@@ -88,7 +88,7 @@ store.commit("GET_GREETING", {
 
 **Strict Mode**
 
-> By default, calling unregistered mutation will not throw any errors. But you can change this behavior by passing strictMode to container options
+> By default, calling unregistered mutation & action will not throw any errors. But you can change this behavior by passing strictMode to container options
 
 ```js
 const store = createContainer({ greeting: "John" }, { strictMode: true });
