@@ -1,6 +1,5 @@
 /* eslint-disable */
 import typescript from "rollup-plugin-typescript2";
-import { uglify } from "rollup-plugin-uglify";
 
 export default {
   input: "./src/index.ts",
@@ -9,12 +8,16 @@ export default {
       clean: true,
       tsconfigOverride: { exclude: ["**/*.spec.ts"] },
     }),
-    uglify(),
   ],
   output: [
     {
       file: "dist/index.js",
       format: "cjs",
+    },
+    {
+      file: "dist/index.min.js",
+      name: "Statefully",
+      format: "umd",
     },
   ],
 };
