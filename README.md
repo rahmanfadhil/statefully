@@ -15,12 +15,20 @@
 
 ### 🔧 Installation
 
+NodeJS
+
 ```sh
 # Using npm
 npm install statefully
 
 # Using yarn
 yarn add statefully
+```
+
+Vanilla Javascript
+
+```html
+<script src="https://unpkg.com/statefully@latest/dist/index.min.js"></script>
 ```
 
 ---
