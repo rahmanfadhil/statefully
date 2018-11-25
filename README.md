@@ -93,7 +93,9 @@ store.commit("GET_GREETING", {
 ```js
 const store = createContainer({ greeting: "John" }, { strictMode: true });
 
-store.mutate("WRONG_MUTATION"); // Will throw an Error
+// Both will throw an error
+store.mutate("WRONG_MUTATION");
+store.commit("WRONG_ACTION");
 ```
 
 **Testing Containers**
