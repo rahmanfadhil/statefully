@@ -5,6 +5,8 @@
     "strict": true,
     "rootDir": "src",
     "outDir": "dist",
-    "declaration": true
+    "declaration": true,
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true
   }
 }
