@@ -53,65 +53,21 @@ const store = createContainer({ greeting: "John" });
 store.getState(); // { greeting: "John" }
 ```
 
-**Mutations**
-
-> Mutation is just a function to mutate container data. Just like 'setState' in React
+**Actions**
 
 ```js
-// Register mutation
-store.mutation("SET_GREETING", (state, { name }) => {
-  return { greeting: name };
-});
-
-// Call mutation
-store.mutate("SET_GREETING", { name: "Doe" });
-
-store.getState(); // { greeting: "Doe" }
-```
-
-```js
-// This will work too 👍
-store.mutate({ greeting: "Doe" });
-
-store.getState(); // { greeting: "Doe" }
-```
-
-**Actions (beta)**
-
-> Actions is a function to do asynchronous things. Ex: fetch data from server
-
-```js
-// Register action
-store.action("GET_GREETING", async (mutate, { url }) => {
-  // Fetch data from server with given url
-  const data = await fetch(url);
-  const { name } = await data.json();
-
-  // Just a regular mutate function 😁
-  mutate("SET_GREETING", { name: name });
-});
+// Create action
+const setGreeting = store.action((state, { name }) => ({ greeting: name }));
 
 // Call action
-store.commit("GET_GREETING", {
-  url: "https://jsonplaceholder.typicode.com/users/1",
-});
+setGreeting({ name: "Doe" });
+
+store.getState(); // { greeting: "Doe" }
 ```
 
 ---
 
 ### 📝 Guide
-
-**Strict Mode**
-
-> By default, calling unregistered mutation & action will not throw any errors. But you can change this behavior by passing strictMode to container options
-
-```js
-const store = createContainer({ greeting: "John" }, { strictMode: true });
-
-// Both will throw an error
-store.mutate("WRONG_MUTATION");
-store.commit("WRONG_ACTION");
-```
 
 **With TypeScript**
 
@@ -120,23 +76,22 @@ store.commit("WRONG_ACTION");
 type State = { greeting: string };
 const store = createContainer<State>({ greeting: "John" });
 
-// Register mutation
-type GreetingProps = { name: string };
-store.mutation<GreetingProps>("SET_GREETING", (state, { name }) => {
-  return { greeting: name };
-});
+// Create action
+type SetGreetingProps = { name: string };
+const setGreeting = store.action<SetGreetingProps>((state, { name }) => ({
+  greeting: name,
+}));
 
-// Call mutation
-store.mutate<GreetingProps>("SET_GREETING", { name: "Doe" });
+// Call action
+setGreeting({ name: "Doe" });
 ```
 
 ---
 
 ### 🌟 Features
 
-- ✅ Mutations
 - ✅ Actions
-- ❌ Subscrition
+- ❌ Subscription
 - ✅ TypeScript Support
 - ❌ Flow Support
 - ❌ React binding

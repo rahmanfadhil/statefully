@@ -10,14 +10,11 @@ describe("Main", () => {
   });
 
   test("Should register and run mutation", () => {
-    type GreetingProps = { name: string };
-    store.mutation<GreetingProps>("SET_GREETING", (state, { name }) => {
-      return { greeting: name };
-    });
-
-    store.mutate<GreetingProps>("SET_GREETING", { name: "Doe" });
+    type SetGreetingProps = { name: string };
+    const setGreeting = store.action<SetGreetingProps>((state, { name }) => ({
+      greeting: name,
+    }));
+    setGreeting({ name: "Doe" });
     expect(store.getState()).toEqual({ greeting: "Doe" });
-    store.mutate({ greeting: "Alfred" });
-    expect(store.getState()).toEqual({ greeting: "Alfred" });
   });
 });
