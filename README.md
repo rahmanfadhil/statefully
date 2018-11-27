@@ -47,7 +47,7 @@ const { createContainer } = require("statefully");
 const store = createContainer({ greeting: "John" });
 ```
 
-**Get current state**
+**Get container state**
 
 ```js
 store.getState(); // { greeting: "John" }
@@ -63,6 +63,14 @@ const setGreeting = store.action((state, { name }) => ({ greeting: name }));
 setGreeting({ name: "Doe" });
 
 store.getState(); // { greeting: "Doe" }
+```
+
+**Subscribe container**
+
+```js
+store.subscribe(() => {
+  console.log("Store changed: ", store.getState());
+});
 ```
 
 ---
@@ -91,7 +99,8 @@ setGreeting({ name: "Doe" });
 ### 🌟 Features
 
 - ✅ Actions
-- ❌ Subscription
+- ❌ Merge actions
+- ✅ Subscription
 - ✅ TypeScript Support
 - ❌ Flow Support
 - ❌ React binding
